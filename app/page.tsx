@@ -8,7 +8,7 @@ const content = {
   ru: {
     menu: 'Меню', close: 'Закрыть', read: 'Открыть', back: 'Назад',
     nav: ['Главная', 'О компании', 'Ценности', 'Новости и инсайты', 'Контакты'],
-    heroKicker: 'Moscow Consulting Group · С 2010 года',
+    heroKicker: 'С 2010 года',
     heroTitle: ['Стратегические решения', 'для реального бизнеса.'],
     heroText: 'Помогаем компаниям повышать эффективность, определять стратегические приоритеты и внедрять необходимые изменения.',
     explore: 'Далее',
@@ -35,7 +35,7 @@ const content = {
   en: {
     menu: 'Menu', close: 'Close', read: 'Open', back: 'Back',
     nav: ['Home', 'The firm', 'Values', 'News & insights', 'Contact'],
-    heroKicker: 'Moscow Consulting Group · Since 2010',
+    heroKicker: 'Since 2010',
     heroTitle: ['Strategic solutions', 'for real business.'],
     heroText: 'We help companies improve performance, define strategic priorities and implement the changes they need.',
     explore: 'Explore',
