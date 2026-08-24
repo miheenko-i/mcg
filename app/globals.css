@@ -128,8 +128,8 @@ section { scroll-margin-top: 4.4rem; }
   bottom: 4.25rem;
   left: var(--page-gutter);
   display: grid;
-  grid-template-columns: minmax(0, 1.55fr) minmax(20rem, 0.55fr);
-  gap: 8vw;
+  grid-template-columns: minmax(0, 1.7fr) minmax(18rem, 0.6fr);
+  gap: clamp(3rem, 5vw, 6rem);
   align-items: end;
 }
 .hero-kicker {
@@ -162,7 +162,7 @@ section { scroll-margin-top: 4.4rem; }
 .hero h1 {
   max-width: 13em;
   margin: 0;
-  font-size: clamp(3.4rem, 5.4vw, 6.5rem);
+  font-size: clamp(3.4rem, 4.8vw, 4.8rem);
   letter-spacing: -0.055em;
   line-height: 0.88;
 }
