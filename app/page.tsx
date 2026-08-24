@@ -6,7 +6,7 @@ type Language = 'ru' | 'en';
 
 const content = {
   ru: {
-    menu: 'Меню', close: 'Закрыть', read: 'Открыть', back: 'Назад',
+    menu: 'Меню', close: 'Закрыть', read: 'Читать', back: 'Назад',
     nav: ['Главная', 'О компании', 'Ценности', 'Новости и инсайты', 'Контакты'],
     heroKicker: 'С 2010 года',
     heroTitle: ['Стратегические решения', 'для реального бизнеса.'],
@@ -33,7 +33,7 @@ const content = {
     articleLabel: 'MCG · Новости и инсайты', archive: 'Архив MCG', draft: 'Черновик публикации MCG',
   },
   en: {
-    menu: 'Menu', close: 'Close', read: 'Open', back: 'Back',
+    menu: 'Menu', close: 'Close', read: 'Read', back: 'Back',
     nav: ['Home', 'The firm', 'Values', 'News & insights', 'Contact'],
     heroKicker: 'Since 2010',
     heroTitle: ['Strategic solutions', 'for real business.'],
