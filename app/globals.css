@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Spectral:wght@200;300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,200&family=Spectral:wght@200;300&display=swap');
 
 :root {
   --ink: #050505;
@@ -28,6 +28,11 @@ button, input, textarea, select { font: inherit; }
 button, a { color: inherit; }
 button { cursor: pointer; }
 a { text-decoration: none; }
+p {
+  font-family: 'Roboto Flex', 'Helvetica Neue', Arial, sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 200;
+}
 main { overflow: clip; }
 
 .hero {
