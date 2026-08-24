@@ -3,8 +3,7 @@ import './globals.css';
 
 export const metadata: Metadata = {
   title: 'MCG — Moscow Consulting Group',
-  description:
-    'MCG — глобальная сеть профессионалов мирового уровня с широким набором талантов и экспертизы.',
+  description: 'MCG — стратегические решения для реального бизнеса.',
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
