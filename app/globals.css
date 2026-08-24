@@ -190,12 +190,12 @@ section { scroll-margin-top: 5.4rem; }
 .section-heading {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding-bottom: 1.25rem;
-  border-bottom: 1px solid var(--line-dark);
+  justify-content: flex-start;
+  padding-bottom: 0;
+  border-bottom: 0;
 }
+.section-heading .eyebrow { display: inline-block; padding-bottom: 1rem; border-bottom: 1px solid currentColor; }
 .section-heading > span { color: rgba(5, 5, 5, 0.46); font-size: 0.62rem; letter-spacing: 0.13em; text-transform: uppercase; }
-.dark-heading { border-color: var(--line-light); }
 .dark-heading > span { color: rgba(247, 245, 239, 0.45); }
 
 .about {
@@ -427,7 +427,7 @@ footer p:last-child { text-align: right; }
   .hero-bottom { gap: 2rem; align-items: flex-end; margin-top: 3rem; }
   .hero-bottom p { max-width: 17rem; font-size: 0.96rem; line-height: 1.55; }
   .light-section, .contact { padding: 5.5rem 1rem; }
-  .section-heading { padding-bottom: 0.9rem; }
+  .section-heading { padding-bottom: 0; }
   .section-heading > span { display: none; }
   .about-label { gap: 1.25rem; }
   .about-label > span { width: 3.2rem; }
