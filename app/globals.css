@@ -58,8 +58,8 @@ section { scroll-margin-top: 5.4rem; }
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(180deg, rgba(0, 0, 0, 0.72) 0%, rgba(0, 0, 0, 0.18) 37%, rgba(0, 0, 0, 0.88) 100%),
-    linear-gradient(90deg, rgba(0, 0, 0, 0.46), transparent 62%);
+    linear-gradient(180deg, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.32) 40%, rgba(0, 0, 0, 0.93) 100%),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.12) 72%);
 }
 .site-header {
   position: fixed;
