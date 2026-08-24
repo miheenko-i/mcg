@@ -4,30 +4,20 @@ import { FormEvent, useEffect, useState } from 'react';
 
 type Language = 'ru' | 'en';
 
-const contactMethods = [
-  { id: 'email', label: { ru: 'Email', en: 'Email' }, fieldLabel: { ru: 'Email', en: 'Email' }, placeholder: 'name@example.com', type: 'email', autoComplete: 'email' },
-  { id: 'telegram', label: { ru: 'Telegram', en: 'Telegram' }, fieldLabel: { ru: 'Telegram', en: 'Telegram' }, placeholder: '@username', type: 'text', autoComplete: 'off' },
-  { id: 'phone', label: { ru: 'Телефон', en: 'Phone' }, fieldLabel: { ru: 'Телефон', en: 'Phone' }, placeholder: '+7 900 000-00-00', type: 'tel', autoComplete: 'tel' },
-  { id: 'whatsapp', label: { ru: 'WhatsApp', en: 'WhatsApp' }, fieldLabel: { ru: 'WhatsApp', en: 'WhatsApp' }, placeholder: '+7 900 000-00-00', type: 'tel', autoComplete: 'tel' },
-] as const;
-
-type ContactMethod = (typeof contactMethods)[number]['id'];
-
 const content = {
   ru: {
     menu: 'Меню', close: 'Закрыть', read: 'Открыть', back: 'Назад',
     nav: ['Главная', 'О компании', 'Ценности', 'Новости и инсайты', 'Контакты'],
     heroKicker: 'Moscow Consulting Group · С 2010 года',
     heroTitle: ['Стратегические решения', 'для реального бизнеса.'],
-    heroText: 'Управленческая экспертиза и цифровые решения, которые работают на практике.',
+    heroText: 'Помогаем компаниям повышать эффективность, определять стратегические приоритеты и внедрять необходимые изменения.',
     explore: 'Далее',
     aboutLabel: 'О компании',
-    aboutTitle: ['Moscow', 'Consulting', 'Group.'],
-    aboutLead: 'Помогаем компаниям повышать эффективность, определять стратегические приоритеты и внедрять необходимые изменения.',
+    aboutTitle: 'Управленческая экспертиза и цифровые решения, которые работают на практике.',
     about: [
-      'Соединяем классические инструменты управленческого консалтинга с инновационными цифровыми решениями.',
-      'Для каждого проекта формируем независимую команду консультантов и отраслевых экспертов.',
-      'Работаем с 2010 года и фокусируемся на решениях, которые можно внедрить в реальном бизнесе.',
+      { title: 'Инструменты и технологии', text: 'Соединяем классические инструменты управленческого консалтинга с инновационными цифровыми решениями.' },
+      { title: 'Команда проекта', text: 'Для каждого проекта формируем независимую команду консультантов и отраслевых экспертов.' },
+      { title: 'Практический результат', text: 'Работаем с 2010 года и фокусируемся на решениях, которые можно внедрить в реальном бизнесе.' },
     ],
     valuesLabel: 'Ценности', valuesTitle: 'Принципы нашей работы.',
     values: [
@@ -37,9 +27,9 @@ const content = {
     ],
     insightsLabel: 'Новости и инсайты', insightsTitle: 'Избранные материалы.', insightsIntro: 'Материалы MCG — о технологиях, проектной работе и практических изменениях в бизнесе.',
     contactLabel: 'Контакты', contactTitle: 'Связаться с MCG.', contactText: 'Москва · Работаем с клиентами в России и СНГ.',
-    name: 'Имя', method: 'Как связаться', topic: 'Тема обращения', topicHint: 'Выберите тему', comment: 'Комментарий', commentHint: 'Коротко опишите задачу', send: 'Отправить',
+    email: 'Email', fullName: 'Имя и фамилия', company: 'Компания', jobTitle: 'Должность', country: 'Страна', countryHint: 'Выберите страну', send: 'Отправить',
     privacy: 'Отправляя форму, вы соглашаетесь на обработку указанных данных.', sent: 'Спасибо. Это демо-форма — в финальной версии подключим выбранный канал связи.',
-    topics: ['Стать клиентом', 'Партнёрство', 'Публикации', 'Другое'],
+    countries: ['Россия', 'Беларусь', 'Казахстан', 'Армения', 'Другая страна'],
     articleLabel: 'MCG · Новости и инсайты', archive: 'Архив MCG', draft: 'Черновик публикации MCG',
   },
   en: {
@@ -47,15 +37,14 @@ const content = {
     nav: ['Home', 'The firm', 'Values', 'News & insights', 'Contact'],
     heroKicker: 'Moscow Consulting Group · Since 2010',
     heroTitle: ['Strategic solutions', 'for real business.'],
-    heroText: 'Management expertise and digital solutions designed to work in practice.',
+    heroText: 'We help companies improve performance, define strategic priorities and implement the changes they need.',
     explore: 'Explore',
     aboutLabel: 'The firm',
-    aboutTitle: ['Moscow', 'Consulting', 'Group.'],
-    aboutLead: 'We help companies improve performance, define strategic priorities and implement the changes they need.',
+    aboutTitle: 'Management expertise and digital solutions that work in practice.',
     about: [
-      'We combine established management consulting methods with innovative digital solutions.',
-      'For every project, we form an independent team of consultants and industry experts.',
-      'Since 2010, we have focused on solutions that can be implemented in real businesses.',
+      { title: 'Methods and technology', text: 'We combine established management consulting methods with innovative digital solutions.' },
+      { title: 'Project team', text: 'For every project, we form an independent team of consultants and industry experts.' },
+      { title: 'Practical results', text: 'Since 2010, we have focused on solutions that can be implemented in real businesses.' },
     ],
     valuesLabel: 'Values', valuesTitle: 'How we work.',
     values: [
@@ -65,9 +54,9 @@ const content = {
     ],
     insightsLabel: 'News & insights', insightsTitle: 'Selected stories.', insightsIntro: 'MCG perspectives on technology, project delivery and practical change in business.',
     contactLabel: 'Contact', contactTitle: 'Contact MCG.', contactText: 'Moscow · Working with clients in Russia and the CIS.',
-    name: 'Name', method: 'How to contact you', topic: 'Subject', topicHint: 'Select a subject', comment: 'Comment', commentHint: 'Briefly describe your task', send: 'Send',
+    email: 'Email Address', fullName: 'First and Last Name', company: 'Company', jobTitle: 'Job Title', country: 'Country', countryHint: 'Select a country', send: 'Send',
     privacy: 'By sending the form, you consent to processing the data provided.', sent: 'Thank you. This is a demo form — the final version will connect to your preferred channel.',
-    topics: ['Become a client', 'Partnership', 'Publications', 'Other'],
+    countries: ['Russia', 'Belarus', 'Kazakhstan', 'Armenia', 'Other country'],
     articleLabel: 'MCG · News & insights', archive: 'MCG archive', draft: 'MCG publication draft',
   },
 };
@@ -93,11 +82,9 @@ const insights = [
 export default function Home() {
   const [language, setLanguage] = useState<Language>('ru');
   const [menuOpen, setMenuOpen] = useState(false);
-  const [contactMethod, setContactMethod] = useState<ContactMethod>('email');
   const [activeInsight, setActiveInsight] = useState<(typeof insights)[number] | null>(null);
   const [sent, setSent] = useState(false);
   const t = content[language];
-  const selectedContact = contactMethods.find((method) => method.id === contactMethod)!;
 
   useEffect(() => { document.documentElement.lang = language; }, [language]);
   useEffect(() => {
@@ -137,37 +124,38 @@ export default function Home() {
       </section>
 
       <section className="about light-section" id="firm">
-        <div className="section-heading" data-reveal><p className="eyebrow">01 · {t.aboutLabel}</p><span>MCG / Moscow</span></div>
-        <div className="about-lead" data-reveal data-reveal-delay="1"><h2>{t.aboutTitle.map((line) => <span key={line}>{line}</span>)}</h2><p>{t.aboutLead}</p></div>
-        <div className="three-copy" data-reveal>{t.about.map((paragraph, index) => <article key={paragraph}><span>0{index + 1}</span><p>{paragraph}</p></article>)}</div>
+        <div className="about-label" data-reveal><span aria-hidden="true" /><p className="eyebrow">{t.aboutLabel}</p></div>
+        <div className="about-lead" data-reveal data-reveal-delay="1"><h2>{t.aboutTitle}</h2></div>
+        <div className="three-copy" data-reveal>{t.about.map((item, index) => <article key={item.title}><span>0{index + 1}</span><h3>{item.title}</h3><p>{item.text}</p></article>)}</div>
       </section>
 
       <section className="values dark-section" id="values">
         <div className="values-backdrop" aria-hidden="true" />
         <div className="values-inner">
-          <div className="section-heading dark-heading" data-reveal><p className="eyebrow light">02 · {t.valuesLabel}</p><span>Since 2010</span></div>
+          <div className="section-heading dark-heading" data-reveal><p className="eyebrow light">{t.valuesLabel}</p></div>
           <h2 data-reveal>{t.valuesTitle}</h2>
           <div className="value-grid">{t.values.map((value, index) => <article key={value.title} data-reveal data-reveal-delay={String(index + 1)}><span>0{index + 1}</span><h3>{value.title}</h3><p>{value.text}</p></article>)}</div>
         </div>
       </section>
 
       <section className="insights light-section" id="insights">
-        <div className="section-heading" data-reveal><p className="eyebrow">03 · {t.insightsLabel}</p><span>MCG / Archive</span></div>
+        <div className="section-heading" data-reveal><p className="eyebrow">{t.insightsLabel}</p></div>
         <div className="insights-lead" data-reveal><h2>{t.insightsTitle}</h2><p>{t.insightsIntro}</p></div>
         <div className="insight-grid">{insights.map((item, index) => <article className="insight-card" key={item.id} data-reveal data-reveal-delay={String(index + 1)}><button type="button" onClick={() => setActiveInsight(item)} aria-label={`${t.read}: ${item.title[language]}`}><div className="insight-image"><img src={item.image} alt="" /><span>0{index + 1}</span></div><div className="insight-meta"><span>{item.kind[language]}</span><span>{t.archive}</span></div><h3>{item.title[language]}</h3><p>{item.excerpt[language]}</p><span className="card-link">{t.read}<i>↗</i></span></button></article>)}</div>
       </section>
 
       <section className="contact dark-section" id="contact">
-        <div className="section-heading dark-heading" data-reveal><p className="eyebrow light">04 · {t.contactLabel}</p><span>Moscow</span></div>
+        <div className="section-heading dark-heading" data-reveal><p className="eyebrow light">{t.contactLabel}</p></div>
         <div className="contact-layout">
           <div className="contact-copy" data-reveal><h2>{t.contactTitle}</h2><p>{t.contactText}</p></div>
           <form className="contact-form" onSubmit={submitContact} data-reveal data-reveal-delay="1">
-            <label><span>{t.name}</span><input name="name" type="text" autoComplete="name" required /></label>
-            <div className="contact-method-row"><span id="contact-method-label">{t.method}</span><div className="contact-methods" role="group" aria-labelledby="contact-method-label">{contactMethods.map((method) => <button key={method.id} type="button" className={contactMethod === method.id ? 'active' : ''} onClick={() => { setContactMethod(method.id); setSent(false); }} aria-pressed={contactMethod === method.id}>{method.label[language]}</button>)}</div></div>
-            <label className="contact-detail-field" key={contactMethod}><span>{selectedContact.fieldLabel[language]}</span><input name="contact" type={selectedContact.type} autoComplete={selectedContact.autoComplete} placeholder={selectedContact.placeholder} required /></label>
-            <label><span>{t.topic}</span><select key={language} name="topic" defaultValue="" required><option value="" disabled>{t.topicHint}</option>{t.topics.map((topic) => <option key={topic} value={topic}>{topic}</option>)}</select></label>
-            <label className="message-field"><span>{t.comment}</span><textarea name="comment" placeholder={t.commentHint} rows={3} required /></label>
-            <div className="form-bottom"><p>{sent ? t.sent : t.privacy}</p><button type="submit" className="submit-button">{t.send}<span>↗</span></button></div>
+            <label className="reference-field"><input name="email" type="email" autoComplete="email" placeholder={`${t.email} *`} aria-label={t.email} required /></label>
+            <label className="reference-field"><input name="name" type="text" autoComplete="name" placeholder={`${t.fullName} *`} aria-label={t.fullName} required /></label>
+            <label className="reference-field"><input name="company" type="text" autoComplete="organization" placeholder={t.company} aria-label={t.company} /></label>
+            <label className="reference-field"><input name="job-title" type="text" autoComplete="organization-title" placeholder={t.jobTitle} aria-label={t.jobTitle} /></label>
+            <label className="reference-field select-field"><select key={language} name="country" defaultValue="" aria-label={t.country} required><option value="" disabled>{t.country} *</option>{t.countries.map((country) => <option key={country} value={country}>{country}</option>)}</select></label>
+            <label className="consent-row"><input name="consent" type="checkbox" required /><span>{sent ? t.sent : t.privacy}</span></label>
+            <div className="form-bottom"><button type="submit" className="submit-button">{t.send}<span>↗</span></button></div>
           </form>
         </div>
         <div className="contact-socials" data-reveal><a href="https://www.linkedin.com/company/moscow-consulting-group/" target="_blank" rel="noreferrer">LinkedIn <span>↗</span></a><a href="https://www.instagram.com/" target="_blank" rel="noreferrer">Instagram <span>↗</span></a></div>
