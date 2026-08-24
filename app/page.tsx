@@ -117,8 +117,8 @@ export default function Home() {
             <button className="menu-button" type="button" onClick={() => setMenuOpen(true)} aria-label={t.menu}><span /><span /><span /></button>
           </div>
         </header>
+        <p className="eyebrow light hero-kicker" key={`kicker-${language}`} data-reveal>{t.heroKicker}</p>
         <div className="hero-content" key={language} data-reveal>
-          <p className="eyebrow light">{t.heroKicker}</p>
           <h1>{t.heroTitle.map((line) => <span key={line}>{line}</span>)}</h1>
           <div className="hero-bottom"><p>{t.heroText}</p></div>
         </div>
