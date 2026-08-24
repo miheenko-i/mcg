@@ -19,14 +19,14 @@ const content = {
       { title: 'Команда проекта', text: 'Для каждого проекта формируем независимую команду консультантов и отраслевых экспертов.' },
       { title: 'Практический результат', text: 'Работаем с 2010 года и фокусируемся на решениях, которые можно внедрить в реальном бизнесе.' },
     ],
-    valuesLabel: 'Ценности', valuesTitle: 'Высокие стандарты — эффективные решения.',
+    valuesLabel: 'Ценности', valuesTitle: 'Ценности.',
     values: [
       { title: 'Индивидуальный подход', text: 'Структуру и график реализации определяем отдельно для каждого проекта, исходя из задачи клиента.' },
       { title: 'Независимая экспертиза', text: 'Объединяем собственных специалистов, независимых консультантов и отраслевых экспертов.' },
       { title: 'Развитие решений', text: 'Постоянно расширяем применение инноваций, новых технологий и цифровых инструментов.' },
     ],
-    insightsLabel: 'Новости и инсайты', insightsTitle: 'Избранные материалы.', insightsIntro: 'Материалы MCG — о технологиях, проектной работе и практических изменениях в бизнесе.',
-    contactLabel: 'Контакты', contactTitle: 'Связаться с MCG.', contactText: 'Москва · Работаем с клиентами в России и СНГ.',
+    insightsLabel: 'Новости и инсайты', insightsTitle: 'Новости и инсайты.', insightsIntro: 'Материалы MCG — о технологиях, проектной работе и практических изменениях в бизнесе.',
+    contactLabel: 'Контакты', contactTitle: 'Контакты.', contactText: 'Москва · Работаем с клиентами в России и СНГ.',
     email: 'Email', fullName: 'Имя и фамилия', company: 'Компания', jobTitle: 'Должность', country: 'Страна', countryHint: 'Выберите страну', send: 'Отправить',
     privacy: 'Отправляя форму, вы соглашаетесь на обработку указанных данных.', sent: 'Спасибо. Это демо-форма — в финальной версии подключим выбранный канал связи.',
     countries: ['Россия', 'Беларусь', 'Казахстан', 'Армения', 'Другая страна'],
@@ -46,14 +46,14 @@ const content = {
       { title: 'Project team', text: 'For every project, we form an independent team of consultants and industry experts.' },
       { title: 'Practical results', text: 'Since 2010, we have focused on solutions that can be implemented in real businesses.' },
     ],
-    valuesLabel: 'Values', valuesTitle: 'High standards — effective solutions.',
+    valuesLabel: 'Values', valuesTitle: 'Values.',
     values: [
       { title: 'A tailored approach', text: 'The structure and delivery plan are defined separately for every project around the client’s task.' },
       { title: 'Independent expertise', text: 'We combine in-house specialists, independent consultants and industry experts.' },
       { title: 'Evolving solutions', text: 'We continuously expand our use of innovation, new technologies and digital tools.' },
     ],
-    insightsLabel: 'News & insights', insightsTitle: 'Selected stories.', insightsIntro: 'MCG perspectives on technology, project delivery and practical change in business.',
-    contactLabel: 'Contact', contactTitle: 'Contact MCG.', contactText: 'Moscow · Working with clients in Russia and the CIS.',
+    insightsLabel: 'News & insights', insightsTitle: 'News & insights.', insightsIntro: 'MCG perspectives on technology, project delivery and practical change in business.',
+    contactLabel: 'Contact', contactTitle: 'Contact.', contactText: 'Moscow · Working with clients in Russia and the CIS.',
     email: 'Email Address', fullName: 'First and Last Name', company: 'Company', jobTitle: 'Job Title', country: 'Country', countryHint: 'Select a country', send: 'Send',
     privacy: 'By sending the form, you consent to processing the data provided.', sent: 'Thank you. This is a demo form — the final version will connect to your preferred channel.',
     countries: ['Russia', 'Belarus', 'Kazakhstan', 'Armenia', 'Other country'],
@@ -132,20 +132,17 @@ export default function Home() {
       <section className="values dark-section" id="values">
         <div className="values-backdrop" aria-hidden="true" />
         <div className="values-inner">
-          <div className="section-heading dark-heading" data-reveal><p className="eyebrow light">{t.valuesLabel}</p></div>
           <h2 data-reveal>{t.valuesTitle}</h2>
           <div className="value-grid">{t.values.map((value, index) => <article key={value.title} data-reveal data-reveal-delay={String(index + 1)}><span>0{index + 1}</span><h3>{value.title}</h3><p>{value.text}</p></article>)}</div>
         </div>
       </section>
 
       <section className="insights light-section" id="insights">
-        <div className="section-heading" data-reveal><p className="eyebrow">{t.insightsLabel}</p></div>
         <div className="insights-lead" data-reveal><h2>{t.insightsTitle}</h2><p>{t.insightsIntro}</p></div>
         <div className="insight-grid">{insights.map((item, index) => <article className="insight-card" key={item.id} data-reveal data-reveal-delay={String(index + 1)}><button type="button" onClick={() => setActiveInsight(item)} aria-label={`${t.read}: ${item.title[language]}`}><div className="insight-image"><img src={item.image} alt="" /><span>0{index + 1}</span></div><div className="insight-meta"><span>{item.kind[language]}</span><span>{t.archive}</span></div><h3>{item.title[language]}</h3><p>{item.excerpt[language]}</p><span className="card-link">{t.read}<i>↗</i></span></button></article>)}</div>
       </section>
 
       <section className="contact dark-section" id="contact">
-        <div className="section-heading dark-heading" data-reveal><p className="eyebrow light">{t.contactLabel}</p></div>
         <div className="contact-layout">
           <div className="contact-copy" data-reveal><h2>{t.contactTitle}</h2><p>{t.contactText}</p></div>
           <form className="contact-form" onSubmit={submitContact} data-reveal data-reveal-delay="1">
