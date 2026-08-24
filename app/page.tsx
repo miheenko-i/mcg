@@ -25,7 +25,7 @@ const content = {
       { title: 'Независимая экспертиза', text: 'Объединяем собственных специалистов, независимых консультантов и отраслевых экспертов.' },
       { title: 'Развитие решений', text: 'Постоянно расширяем применение инноваций, новых технологий и цифровых инструментов.' },
     ],
-    insightsLabel: 'Новости и инсайты', insightsTitle: 'Новости и инсайты.', insightsIntro: 'Материалы MCG — о технологиях, проектной работе и практических изменениях в бизнесе.',
+    insightsLabel: 'Новости и инсайты', insightsTitle: 'Новости и инсайты.',
     contactLabel: 'Контакты', contactTitle: 'Контакты.', contactText: 'Москва · Работаем с клиентами в России и СНГ.',
     email: 'Email', fullName: 'Имя и фамилия', company: 'Компания', jobTitle: 'Должность', country: 'Страна', countryHint: 'Выберите страну', send: 'Отправить',
     privacy: 'Отправляя форму, вы соглашаетесь на обработку указанных данных.', sent: 'Спасибо. Это демо-форма — в финальной версии подключим выбранный канал связи.',
@@ -52,7 +52,7 @@ const content = {
       { title: 'Independent expertise', text: 'We combine in-house specialists, independent consultants and industry experts.' },
       { title: 'Evolving solutions', text: 'We continuously expand our use of innovation, new technologies and digital tools.' },
     ],
-    insightsLabel: 'News & insights', insightsTitle: 'News & insights.', insightsIntro: 'MCG perspectives on technology, project delivery and practical change in business.',
+    insightsLabel: 'News & insights', insightsTitle: 'News & insights.',
     contactLabel: 'Contact', contactTitle: 'Contact.', contactText: 'Moscow · Working with clients in Russia and the CIS.',
     email: 'Email Address', fullName: 'First and Last Name', company: 'Company', jobTitle: 'Job Title', country: 'Country', countryHint: 'Select a country', send: 'Send',
     privacy: 'By sending the form, you consent to processing the data provided.', sent: 'Thank you. This is a demo form — the final version will connect to your preferred channel.',
@@ -138,7 +138,7 @@ export default function Home() {
       </section>
 
       <section className="insights light-section" id="insights">
-        <div className="insights-lead" data-reveal><h2>{t.insightsTitle}</h2><p>{t.insightsIntro}</p></div>
+        <div className="insights-lead" data-reveal><h2>{t.insightsTitle}</h2></div>
         <div className="insight-grid">{insights.map((item, index) => <article className="insight-card" key={item.id} data-reveal data-reveal-delay={String(index + 1)}><button type="button" onClick={() => setActiveInsight(item)} aria-label={`${t.read}: ${item.title[language]}`}><div className="insight-image"><img src={item.image} alt="" /><span>0{index + 1}</span></div><div className="insight-meta"><span>{item.kind[language]}</span><span>{t.archive}</span></div><h3>{item.title[language]}</h3><p>{item.excerpt[language]}</p><span className="card-link">{t.read}<i>↗</i></span></button></article>)}</div>
       </section>
 
