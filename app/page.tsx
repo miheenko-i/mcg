@@ -149,11 +149,11 @@ export default function Home() {
         <div className="contact-layout">
           <div className="contact-copy" data-reveal><h2>{t.contactTitle}</h2><p>{t.contactText}</p></div>
           <form className="contact-form" onSubmit={submitContact} data-reveal data-reveal-delay="1">
-            <label className="reference-field"><input name="email" type="email" autoComplete="email" placeholder={`${t.email} *`} aria-label={t.email} required /></label>
-            <label className="reference-field"><input name="name" type="text" autoComplete="name" placeholder={`${t.fullName} *`} aria-label={t.fullName} required /></label>
-            <label className="reference-field"><input name="company" type="text" autoComplete="organization" placeholder={t.company} aria-label={t.company} /></label>
-            <label className="reference-field"><input name="job-title" type="text" autoComplete="organization-title" placeholder={t.jobTitle} aria-label={t.jobTitle} /></label>
-            <label className="reference-field select-field"><select key={language} name="country" defaultValue="" aria-label={t.country} required><option value="" disabled>{t.country} *</option>{t.countries.map((country) => <option key={country} value={country}>{country}</option>)}</select></label>
+            <label className="reference-field"><span>{t.email} *</span><input name="email" type="email" autoComplete="email" placeholder="name@example.com" required /></label>
+            <label className="reference-field"><span>{t.fullName} *</span><input name="name" type="text" autoComplete="name" required /></label>
+            <label className="reference-field"><span>{t.company}</span><input name="company" type="text" autoComplete="organization" /></label>
+            <label className="reference-field"><span>{t.jobTitle}</span><input name="job-title" type="text" autoComplete="organization-title" /></label>
+            <label className="reference-field select-field"><span>{t.country} *</span><select key={language} name="country" defaultValue="" required><option value="" disabled>{t.countryHint}</option>{t.countries.map((country) => <option key={country} value={country}>{country}</option>)}</select></label>
             <label className="consent-row"><input name="consent" type="checkbox" required /><span>{sent ? t.sent : t.privacy}</span></label>
             <div className="form-bottom"><button type="submit" className="submit-button">{t.send}<span>↗</span></button></div>
           </form>
