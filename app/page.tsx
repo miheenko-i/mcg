@@ -19,7 +19,7 @@ const content = {
       { title: 'Команда проекта', text: 'Для каждого проекта формируем независимую команду консультантов и отраслевых экспертов.' },
       { title: 'Практический результат', text: 'Работаем с 2010 года и фокусируемся на решениях, которые можно внедрить в реальном бизнесе.' },
     ],
-    valuesLabel: 'Ценности', valuesTitle: 'Принципы нашей работы.',
+    valuesLabel: 'Ценности', valuesTitle: 'Высокие стандарты — эффективные решения.',
     values: [
       { title: 'Индивидуальный подход', text: 'Структуру и график реализации определяем отдельно для каждого проекта, исходя из задачи клиента.' },
       { title: 'Независимая экспертиза', text: 'Объединяем собственных специалистов, независимых консультантов и отраслевых экспертов.' },
@@ -46,7 +46,7 @@ const content = {
       { title: 'Project team', text: 'For every project, we form an independent team of consultants and industry experts.' },
       { title: 'Practical results', text: 'Since 2010, we have focused on solutions that can be implemented in real businesses.' },
     ],
-    valuesLabel: 'Values', valuesTitle: 'How we work.',
+    valuesLabel: 'Values', valuesTitle: 'High standards — effective solutions.',
     values: [
       { title: 'A tailored approach', text: 'The structure and delivery plan are defined separately for every project around the client’s task.' },
       { title: 'Independent expertise', text: 'We combine in-house specialists, independent consultants and industry experts.' },
