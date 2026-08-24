@@ -80,7 +80,7 @@ const insights = [
 ];
 
 export default function Home() {
-  const [language, setLanguage] = useState<Language>('ru');
+  const [language, setLanguage] = useState<Language>('en');
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeInsight, setActiveInsight] = useState<(typeof insights)[number] | null>(null);
   const [sent, setSent] = useState(false);
