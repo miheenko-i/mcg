@@ -26,7 +26,7 @@ const content = {
       { title: 'Развитие решений', text: 'Постоянно расширяем применение инноваций, новых технологий и цифровых инструментов.' },
     ],
     insightsLabel: 'Новости и инсайты', insightsTitle: 'Избранные материалы.',
-    contactLabel: 'Контакты', contactTitle: 'Связаться с MCG.', contactText: 'Москва · Работаем с клиентами в России и СНГ.',
+    contactLabel: 'Контакты', contactTitle: 'Связаться с\u00A0MCG.', contactText: 'Москва · Работаем с клиентами в России и СНГ.',
     email: 'Email', fullName: 'Имя и фамилия', company: 'Компания', jobTitle: 'Должность', country: 'Страна', countryHint: 'Выберите страну', send: 'Отправить',
     privacy: 'Отправляя форму, вы соглашаетесь на обработку указанных данных.', sent: 'Спасибо. Это демо-форма — в финальной версии подключим выбранный канал связи.',
     countries: ['Россия', 'Беларусь', 'Казахстан', 'Армения', 'Другая страна'],
@@ -110,7 +110,7 @@ export default function Home() {
         <video className="hero-video" src="/media/mcg-hero.mp4" autoPlay muted loop playsInline preload="metadata" />
         <div className="hero-shade" aria-hidden="true" />
         <header className="site-header">
-          <a className="wordmark" href="#top" aria-label="MCG — home">MCG</a>
+          <a className="wordmark" href="#top" aria-label="MCG — home"><img className="brand-logo" src="/media/mcg-logo-source.svg" alt="" /></a>
           <nav className="desktop-nav" aria-label={t.menu}>{t.nav.slice(1).map((item, index) => { const ids = ['firm', 'values', 'insights', 'contact']; return <a key={item} href={`#${ids[index]}`}>{item}</a>; })}</nav>
           <div className="header-actions">
             <button className="language" type="button" onClick={() => setLanguage(language === 'ru' ? 'en' : 'ru')} aria-label={language === 'ru' ? 'Switch to English' : 'Переключить на русский'}><span className={language === 'ru' ? 'active' : ''}>RU</span><i>/</i><span className={language === 'en' ? 'active' : ''}>EN</span></button>
@@ -162,10 +162,10 @@ export default function Home() {
         <div className="contact-socials" data-reveal><a href="https://www.linkedin.com/company/moscow-consulting-group/" target="_blank" rel="noreferrer">LinkedIn <span>↗</span></a><a href="https://www.instagram.com/" target="_blank" rel="noreferrer">Instagram <span>↗</span></a></div>
       </section>
 
-      <footer><a className="wordmark footer-mark" href="#top">MCG</a><p>© 2026 Moscow Consulting Group</p><p>Moscow</p></footer>
+      <footer><a className="wordmark footer-mark" href="#top" aria-label="MCG — home"><img className="brand-logo" src="/media/mcg-logo-source.svg" alt="" /></a><p>© 2026 Moscow Consulting Group</p><p>Moscow</p></footer>
 
       <div className={`menu-overlay ${menuOpen ? 'is-open' : ''}`} aria-hidden={!menuOpen}>
-        <div className="overlay-header"><span className="wordmark inverse">MCG</span><button className="close-button" type="button" onClick={() => setMenuOpen(false)} aria-label={t.close}>×</button></div>
+        <div className="overlay-header"><span className="wordmark inverse"><img className="brand-logo" src="/media/mcg-logo-source.svg" alt="MCG" /></span><button className="close-button" type="button" onClick={() => setMenuOpen(false)} aria-label={t.close}>×</button></div>
         <nav>{t.nav.map((item, index) => { const ids = ['top', 'firm', 'values', 'insights', 'contact']; return <button key={item} type="button" onClick={() => goTo(ids[index])}><span>0{index + 1}</span>{item}<i>↘</i></button>; })}</nav>
         <div className="menu-footer"><p>Moscow Consulting Group</p><p>2010—2026</p></div>
       </div>
