@@ -1,6 +1,6 @@
 'use client';
 
-import { FormEvent, useEffect, useState } from 'react';
+import { FormEvent, useEffect, useRef, useState } from 'react';
 
 type Language = 'ru' | 'en';
 
@@ -129,9 +129,17 @@ export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeInsight, setActiveInsight] = useState<(typeof insights)[number] | null>(null);
   const [sent, setSent] = useState(false);
+  const [headerScrolled, setHeaderScrolled] = useState(false);
+  const insightRailRef = useRef<HTMLDivElement>(null);
   const t = content[language];
 
   useEffect(() => { document.documentElement.lang = language; }, [language]);
+  useEffect(() => {
+    const updateHeader = () => setHeaderScrolled(window.scrollY > 16);
+    updateHeader();
+    window.addEventListener('scroll', updateHeader, { passive: true });
+    return () => window.removeEventListener('scroll', updateHeader);
+  }, []);
   useEffect(() => {
     document.body.style.overflow = menuOpen || activeInsight ? 'hidden' : '';
     return () => { document.body.style.overflow = ''; };
@@ -148,6 +156,12 @@ export default function Home() {
 
   function goTo(id: string) { setMenuOpen(false); window.setTimeout(() => document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' }), 100); }
   function submitContact(event: FormEvent<HTMLFormElement>) { event.preventDefault(); setSent(true); }
+  function scrollInsights(direction: -1 | 1) {
+    const rail = insightRailRef.current;
+    if (!rail) return;
+    const card = rail.querySelector<HTMLElement>('.insight-card');
+    rail.scrollBy({ left: direction * (card?.offsetWidth ?? rail.clientWidth * 0.84), behavior: 'smooth' });
+  }
 
   const sectionIds = ['firm', 'values', 'insights', 'contact'];
 
@@ -156,7 +170,7 @@ export default function Home() {
       <section className="hero" id="top">
         <video className="hero-video" src="/media/mcg-hero.mp4" autoPlay muted loop playsInline preload="metadata" />
         <div className="hero-shade" aria-hidden="true" />
-        <header className="site-header">
+        <header className={`site-header ${headerScrolled ? 'is-scrolled' : ''}`}>
           <a className="wordmark" href="#top" aria-label="MCG — home"><img className="brand-logo" src="/media/mcg-logo-source.svg" alt="" /></a>
           <nav className="desktop-nav" aria-label={t.menu}>{t.nav.slice(1).map((item, index) => <a key={item} href={`#${sectionIds[index]}`}>{item}</a>)}</nav>
           <div className="header-actions">
@@ -174,11 +188,21 @@ export default function Home() {
       <section className="firm" id="firm">
         {t.firm.map((story, index) => (
           <article className={`firm-story firm-story--${index + 1}`} key={story.image}>
-            <div className="firm-story__media" data-reveal data-reveal-image><img src={story.image} alt={story.alt} /></div>
-            <div className="firm-story__copy">
-              {index === 0 && <p className="eyebrow" data-reveal>{t.firmLabel}</p>}
-              <div className="firm-story__paragraphs" data-reveal data-reveal-delay="1">{story.paragraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}</div>
-            </div>
+            {index > 0 ? (
+              <>
+                <div className="firm-story__copy firm-story__copy--primary" data-reveal><p>{story.paragraphs[0]}</p></div>
+                <div className="firm-story__media" data-reveal data-reveal-image data-reveal-delay="1"><img src={story.image} alt={story.alt} /></div>
+                <div className="firm-story__copy firm-story__copy--secondary" data-reveal data-reveal-delay="2"><p>{story.paragraphs[1]}</p></div>
+              </>
+            ) : (
+              <>
+                <div className="firm-story__media" data-reveal data-reveal-image><img src={story.image} alt={story.alt} /></div>
+                <div className="firm-story__copy">
+                  {index === 0 && <p className="eyebrow" data-reveal>{t.firmLabel}</p>}
+                  <div className="firm-story__paragraphs" data-reveal data-reveal-delay="1">{story.paragraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}</div>
+                </div>
+              </>
+            )}
           </article>
         ))}
       </section>
@@ -191,8 +215,14 @@ export default function Home() {
       </section>
 
       <section className="insights" id="insights">
-        <div className="insights-lead" data-reveal><h2>{t.insightsTitle}</h2></div>
-        <div className="insight-rail">{insights.map((item, index) => <article className="insight-card" key={item.id} data-reveal data-reveal-delay={String(index + 1)}><button type="button" onClick={() => setActiveInsight(item)} aria-label={`${t.read}: ${item.title[language]}`}><div className="insight-image" data-reveal data-reveal-image data-reveal-delay={String(index + 1)}><img src={item.image} alt="" /></div><div className="insight-meta"><time>{item.date[language]}</time></div><h3>{item.title[language]}</h3><span className="card-link">{t.read}<i>↗</i></span></button></article>)}</div>
+        <div className="insights-lead" data-reveal>
+          <h2>{t.insightsTitle}</h2>
+          <div className="insight-controls" aria-label={language === 'ru' ? 'Прокрутка материалов' : 'Story navigation'}>
+            <button type="button" onClick={() => scrollInsights(-1)} aria-label={language === 'ru' ? 'Предыдущий материал' : 'Previous story'}>←</button>
+            <button type="button" onClick={() => scrollInsights(1)} aria-label={language === 'ru' ? 'Следующий материал' : 'Next story'}>→</button>
+          </div>
+        </div>
+        <div className="insight-rail" ref={insightRailRef}>{insights.map((item, index) => <article className="insight-card" key={item.id} data-reveal data-reveal-delay={String(index + 1)}><button type="button" onClick={() => setActiveInsight(item)} aria-label={`${t.read}: ${item.title[language]}`}><div className="insight-image" data-reveal data-reveal-image data-reveal-delay={String(index + 1)}><img src={item.image} alt="" /></div><div className="insight-meta"><time>{item.date[language]}</time></div><h3>{item.title[language]}</h3><span className="card-link">{t.read}<i>↗</i></span></button></article>)}</div>
       </section>
 
       <section className="contact" id="contact">
