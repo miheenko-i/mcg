@@ -216,7 +216,7 @@ h1, h2, h3, .menu-overlay nav button { font-family: 'Figtree', 'Helvetica Neue',
 .submit-button span { color: var(--gold-light); }
 .submit-button:hover span { color: var(--navy-deep); }
 
-.site-footer { padding: 0 var(--page-gutter); border-top: 1px solid var(--line-light); background: var(--navy); color: var(--white); }
+.site-footer { padding: 0 var(--page-gutter); border-top: 1px solid var(--line-light); background: #111416; color: var(--white); }
 .footer-main { display: grid; grid-template-columns: minmax(12rem, 1.7fr) repeat(3, minmax(9rem, 0.65fr)); gap: 3rem; padding: clamp(4rem, 7vw, 7rem) 0; }
 .footer-mark { width: 8rem; align-self: start; }
 .footer-column { display: flex; align-items: flex-start; flex-direction: column; gap: 0.8rem; }
