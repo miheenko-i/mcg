@@ -135,13 +135,14 @@ h1, h2, h3, .menu-overlay nav button { font-family: 'Figtree', 'Helvetica Neue',
 .firm-story__copy { align-self: stretch; display: flex; flex-direction: column; justify-content: center; }
 .firm-story__paragraphs { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(2rem, 3.5vw, 4rem); }
 .firm-story__paragraphs p { max-width: 34rem; margin: 0; font-size: clamp(1rem, 1.1vw, 1.16rem); line-height: 1.68; }
-.firm-story--1 { grid-template-columns: minmax(0, 1.32fr) minmax(15rem, 0.42fr); min-height: 43rem; background: var(--paper); color: var(--navy); }
-.firm-story--1 .firm-story__media { grid-column: 2; width: min(100%, 24rem); height: min(46vh, 31rem); justify-self: end; }
-.firm-story--1 .firm-story__copy { grid-row: 1; grid-column: 1; }
-.firm-story--1 .eyebrow { margin-bottom: clamp(4rem, 7vw, 7.5rem); }
+.firm-story--1 { grid-template-columns: minmax(15rem, 0.5fr) minmax(0, 1.5fr); min-height: 46rem; background: var(--paper); color: var(--navy); }
+.firm-story--1 .firm-story__media { grid-column: 1; width: min(100%, 25rem); aspect-ratio: 9 / 16; height: auto; justify-self: start; }
+.firm-story--1 .firm-story__copy { grid-row: 1; grid-column: 2; }
+.firm-story--1 .eyebrow { margin-bottom: clamp(4rem, 6vw, 6.5rem); }
 .firm-story--1 .firm-story__media img { filter: saturate(0.72) contrast(1.04); }
-.firm-story--1 .firm-story__paragraphs { grid-template-columns: minmax(0, 1fr); }
-.firm-story--1 .firm-story__paragraphs p { max-width: 26em; font-family: 'Figtree', 'Helvetica Neue', Arial, sans-serif; font-size: clamp(1.65rem, 2.35vw, 2.7rem); letter-spacing: -0.025em; line-height: 1.2; }
+.firm-story--1 .firm-story__paragraphs { grid-template-columns: minmax(0, 1fr); gap: clamp(3rem, 5vw, 5.5rem); }
+.firm-story--1 .firm-story__paragraphs p:first-child { max-width: 19em; font-family: 'Figtree', 'Helvetica Neue', Arial, sans-serif; font-size: clamp(1.7rem, 2.25vw, 2.6rem); letter-spacing: -0.025em; line-height: 1.2; }
+.firm-story--1 .firm-story__paragraphs p:last-child { max-width: 35rem; margin-left: auto; padding-left: 1.7rem; border-left: 1px solid var(--gold); font-size: clamp(1rem, 1.08vw, 1.15rem); line-height: 1.72; }
 .firm-story--2 { grid-template-columns: minmax(20rem, 1.08fr) minmax(20rem, 0.72fr); min-height: 50rem; background: var(--navy); color: var(--white); }
 .firm-story--2 .firm-story__media { width: 100%; height: min(67vh, 44rem); justify-self: start; }
 .firm-story--2 .firm-story__copy { grid-column: 2; }
@@ -273,6 +274,7 @@ h1, h2, h3, .menu-overlay nav button { font-family: 'Figtree', 'Helvetica Neue',
   .firm-story__copy, .firm-story--1 .firm-story__copy, .firm-story--2 .firm-story__copy { grid-row: auto; grid-column: auto; }
   .firm-story--1 .firm-story__copy { order: -1; }
   .firm-story--1 .eyebrow { margin-bottom: 3rem; }
+  .firm-story--1 .firm-story__paragraphs p:last-child { margin-left: 0; }
   .firm-story--2 .firm-story__paragraphs, .firm-story--3 .firm-story__paragraphs { grid-template-columns: 1fr; }
   .firm-story--2 .firm-story__paragraphs p:last-child { margin-left: 0; }
   .value-grid { grid-template-columns: 1fr; }
@@ -298,12 +300,13 @@ h1, h2, h3, .menu-overlay nav button { font-family: 'Figtree', 'Helvetica Neue',
   .hero-bottom { margin-top: 2.2rem; }
   .hero-bottom p { max-width: 22rem; font-size: 0.94rem; line-height: 1.55; }
   .firm-story, .firm-story--2, .firm-story--3 { gap: 2.8rem; padding: 5.5rem 1rem; }
-  .firm-story--1 .firm-story__media { height: min(112vw, 34rem); }
+  .firm-story--1 .firm-story__media { width: min(76vw, 23rem); height: auto; min-height: 0; }
   .firm-story--2 .firm-story__media { height: min(76vw, 30rem); }
   .firm-story--3 .firm-story__media { height: min(62vw, 25rem); min-height: 17rem; }
   .firm-story__paragraphs { gap: 1.6rem; }
   .firm-story__paragraphs p { font-size: 1rem; line-height: 1.65; }
-  .firm-story--1 .firm-story__paragraphs p { font-size: clamp(1.55rem, 6.8vw, 2.25rem); line-height: 1.22; }
+  .firm-story--1 .firm-story__paragraphs p:first-child { font-size: clamp(1.55rem, 6.8vw, 2.25rem); line-height: 1.22; }
+  .firm-story--1 .firm-story__paragraphs p:last-child { padding-left: 1.2rem; font-size: 1rem; line-height: 1.65; }
   .firm-story--2 .firm-story__paragraphs p:first-child, .firm-story--3 .firm-story__paragraphs p:first-child { font-size: 1.32rem; line-height: 1.46; }
   .values { padding: 5.5rem 1rem; }
   .values h2 { margin-bottom: 4.5rem; font-size: clamp(2.7rem, 12vw, 4rem); }
