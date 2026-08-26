@@ -18,7 +18,6 @@ const content = {
         image: '/media/firm-architecture.jpg',
         alt: 'Современная архитектура из синего стекла и золотистого металла',
         paragraphs: [
-          'MCG занимается вопросами капитала и корпоративного управления.',
           'Мы работаем с собственниками, акционерами и предпринимательскими семьями, когда стоящие перед ними вопросы выходят за рамки текущей повестки и определяют будущее бизнеса: его структуру собственности, направление развития, контроль, актуальность и способность сохранять устойчивость.',
         ],
       },
@@ -67,7 +66,6 @@ const content = {
         image: '/media/firm-architecture.jpg',
         alt: 'Modern blue glass and gold metal architecture',
         paragraphs: [
-          'MCG works on matters of capital and governance.',
           'We partner with owners, shareholders and entrepreneurial families when the questions at hand reach beyond the immediate agenda and shape the future of an enterprise: its ownership, direction, control, relevance and capacity to endure.',
         ],
       },
